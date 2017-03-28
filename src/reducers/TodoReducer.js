@@ -10,11 +10,22 @@ export default function TodoReducer(state = initState, action) {
   switch (action.type) {
     // 這裡應該要參考上面的 initState 資料結構，補上 fetch 請求會發生的三種 action 對應的 reducer 資料合併處理
     case FETCH_TODOS_REQUEST:
-      return ;
+      return {
+        ...state,
+        status: 'request'
+      };
     case FETCH_TODOS_SUCCESS:
-      return ;
+      return {
+        ...state,
+        status: 'success',
+        data: action.response
+      };
     case FETCH_TODOS_FAILURE:
-      return ;
+      return {
+        ...state,
+        status: 'failure',
+        error: action.error
+      };
 
     case TOGGLE_TODO_COMPLETED:
       return {
@@ -26,7 +37,7 @@ export default function TodoReducer(state = initState, action) {
               isCompleted: !todo.isCompleted
             };
           }
-          return todo; 
+          return todo;
         })
       };
     default:
