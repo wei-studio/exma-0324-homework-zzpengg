@@ -32,7 +32,7 @@ class TodoContainer extends Component {
 
         {
           this.props.todos.status == 'success' && (
-            <TodoList todos={this.props.todos.data} />
+            <TodoList todos={this.props.todos.data} dispatchToggleTodoCompleted={this.dispatchToggleTodoCompleted}/>
           )
         }
 
