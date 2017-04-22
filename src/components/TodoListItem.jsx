@@ -1,6 +1,12 @@
 import React, { Component } from 'react'
 import Rating from './rating';
 
+import HouseDetail from './HouseDetail';
+
+import DeleteModal from './DeleteModal';
+
+import UpdateModal from './UpdateModal';
+
 class TodoListItem extends Component {
 
   rate(point){
@@ -17,7 +23,7 @@ class TodoListItem extends Component {
           <h2 className="ui center aligned header">{index + 1}</h2>
         </td>
         <td className="single line">
-          {title}
+          <HouseDetail data={this.props.data} />
         </td>
         <td className="single line">
           {area}
@@ -27,6 +33,9 @@ class TodoListItem extends Component {
         </td>
         <td>
           <Rating rating={score} onRate={this.rate.bind(this)} />
+        </td>
+        <td>
+          <UpdateModal data={this.props.data} onUpdate={this.props.dispatchUpdateDataCompleted} index={index} /><DeleteModal onDelete={this.props.dispatchDeleteDataCompleted} index={index} />
         </td>
       </tr>
     );

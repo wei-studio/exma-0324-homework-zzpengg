@@ -32,15 +32,18 @@ class TodoList extends Component {
           <thead>
             <tr><th className="single line">編號</th>
             <th>標題</th>
-            <th>所在區域<i className="sort icon" onClick={this.toggleAreaSort}></i></th>
+            <th>所在區域<i className="sort icon" onClick={this.toggleAreaSort} ></i></th>
             <th>租金<i className="sort icon" onClick={this.toggleSort}></i></th>
             <th>評分<i className="sort icon" onClick={this.toggleScoreSort}></i></th>
+            <th>功能</th>
           </tr></thead>
           <tbody>
             {this.props.datas.map((data, index) => (
               <TodoListItem
                 data={data}
                 dispatchToggleTodoCompleted={this.props.dispatchToggleTodoCompleted}
+                dispatchDeleteDataCompleted={this.props.dispatchDeleteDataCompleted}
+                dispatchUpdateDataCompleted={this.props.dispatchUpdateDataCompleted}
                 index={index}
                 key={index}
               />

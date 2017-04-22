@@ -3,7 +3,7 @@ const express = require('express');
 const app = express();
 const webpack = require('webpack');
 const webpackCompiler = webpack(require('./webpack.config.js'));
-const port = 3000;
+const port = 8080;
 
 app.use(require('webpack-dev-middleware')(webpackCompiler, {
   noInfo: true,

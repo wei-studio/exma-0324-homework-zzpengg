@@ -6,6 +6,8 @@ import {
   TOGGLE_SCORE_COMPLETED,
   TOGGLE_AREA_COMPLETED,
   SEARCH_TITLE_COMPLETED,
+  DELETE_DATA_COMPLETED,
+  UPDATE_DATA_COMPLETED,
 } from './../actions/TodoAction'
 
 const initState = {
@@ -72,6 +74,21 @@ export default function TodoReducer(state = initState, action) {
           return str.title.toLowerCase().match( searchString );
         }),
       };
+    case DELETE_DATA_COMPLETED:
+      let newData = state.renderData;
+      newData.splice(action.index,1);
+      return {
+        ...state,
+        renderData: newData,
+      };
+    case UPDATE_DATA_COMPLETED:
+      newData = state.renderData;
+      console.log(newData[action.index].rent);
+      newData[action.index].rent = action.newRent;
+      return {
+        ...state,
+        renderData: newData,
+    };
     default:
       return state;
   }

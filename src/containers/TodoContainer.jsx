@@ -9,6 +9,8 @@ import {
   toggleScoreCompleted,
   toggleAreaCompleted,
   searchTitleCompleted,
+  deleteDataCompleted,
+  updateDataCompleted,
 } from './../actions/TodoAction'
 
 class TodoContainer extends Component {
@@ -30,6 +32,17 @@ class TodoContainer extends Component {
 
   dispatchSearchTitleCompleted = (searchTitle) => {
     this.props.dispatch(searchTitleCompleted(searchTitle));
+  }
+  
+  dispatchDeleteDataCompleted = (index) => {
+    console.log('index2 = ' + index);
+    this.props.dispatch(deleteDataCompleted(index));
+  }
+  
+  dispatchUpdateDataCompleted = (index, newRent) => {
+    console.log('index2 = ' + index);
+    console.log('index3 = ' + newRent);
+    this.props.dispatch(updateDataCompleted(index, newRent));
   }
 
   render() {
@@ -54,7 +67,9 @@ class TodoContainer extends Component {
               dispatchToggleTodoCompleted={this.dispatchToggleTodoCompleted}
               dispatchToggleScoreCompleted={this.dispatchToggleScoreCompleted}
               dispatchToggleAreaCompleted={this.dispatchToggleAreaCompleted}
-              dispatchSearchTitleCompleted={this.dispatchSearchTitleCompleted}/>
+              dispatchSearchTitleCompleted={this.dispatchSearchTitleCompleted}
+              dispatchDeleteDataCompleted={this.dispatchDeleteDataCompleted}
+              dispatchUpdateDataCompleted={this.dispatchUpdateDataCompleted}/>
           )
 
         }

@@ -27,6 +27,23 @@ export function searchTitleCompleted(searchTitle) {
   }
 }
 
+export const DELETE_DATA_COMPLETED = 'DELETE_DATA_COMPLETED';
+export function deleteDataCompleted(index) {
+  return {
+    type: DELETE_DATA_COMPLETED,
+    index,
+  }
+}
+
+export const UPDATE_DATA_COMPLETED = 'UPDATE_DATA_COMPLETED';
+export function updateDataCompleted(index, newRent) {
+  return {
+    type: UPDATE_DATA_COMPLETED,
+    index,
+    newRent,
+  }
+}
+
 export const FETCH_TODOS_REQUEST = 'FETCH_TODOS_REQUEST';
 export const FETCH_TODOS_SUCCESS = 'FETCH_TODOS_SUCCESS';
 export const FETCH_TODOS_FAILURE = 'FETCH_TODOS_FAILURE';
@@ -39,7 +56,7 @@ export function fetchTodos() {
     });
 
     try {
-      const httpResponse = await fetch("http://test-zzpengg.c9users.io:8080/house/findHouseData")
+      const httpResponse = await fetch("http://test-zzpengg.c9users.io:8080/house/index")
       .then(function(response) {
         // The response is a Response instance.
         // You parse the data into a useable format using `.json()`
@@ -48,7 +65,7 @@ export function fetchTodos() {
 
       console.log(httpResponse);
       console.log(httpResponse.data[0].title);
-      if(httpResponse.text != 'house find success'){
+      if(httpResponse.text != 'find success'){
         throw new Error(`${httpResponse.status(httpResponse.statusText)}`);
       }
 
